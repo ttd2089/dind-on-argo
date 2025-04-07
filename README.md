@@ -4,13 +4,19 @@ Provides infrastructure definitions to explore and analyze resource utilization 
 
 ## Instructions
 
-1. Provision a k8s cluster that can support `Service` resources with `type: LoadBalancer`.
+Provision a k8s cluster that can support `Service` resources with `type: LoadBalancer`.
 
-2. Create a namespace and apply the [quick-start-minimal-v3.6.5.yaml](./manifests/argo-workflows/quick-start-minimal-v3.6.5.yaml) manifest.
+Create a namespace and apply the [quick-start-minimal-v3.6.5.yaml](./manifests/argo-workflows/quick-start-minimal-v3.6.5.yaml) manifest.
 
 ```sh
 kubectl create namespace argo
-kubectl apply -n argo -f ./manifests/argo-workflows/quick-start-minimal-v3.6.5.yaml
+kubectl apply --namespace argo --filename ./manifests/argo-workflows/quick-start-minimal-v3.6.5.yaml
+```
+
+Build the [`memhog`](./memhog/README.md) Docker image and make it accessible to your k8s cluster.
+
+```sh
+docker build --tag memhog:v0.1.0 --file ./memhog/Dockerfile ./memhog
 ```
 
 ## Cluster Configurations
