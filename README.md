@@ -59,7 +59,7 @@ Provides infrastructure definitions to explore and analyze resource utilization 
 
 ### Kind On WSL And Docker Desktop
 
-```
+```text
 Windows:
     Windows 11 Pro 10.0.26100.3624 Build 26100
 WSL:
