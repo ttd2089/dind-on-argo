@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: dind-build-and-run-memhog-fail-
+spec:
+  entrypoint: build-and-run-memhog-fail
+  templates:
+    - name: build-and-run-memhog-fail
+      container:
+        image: build-agent:v0.1.0
+        command: [sh, -c]
+        args:
+          - |
+            until docker ps; do
+              echo "docker is not available yet"
+              sleep 1
+            done
+            docker build --tag memhog:from-DinD .
+            docker run --rm memhog:from-DinD -allocSizeBytes 1048576 -allocIntervalMilliseconds 25 -maxAllocBytes 2147483648
+        env:
+          - name: DOCKER_HOST
+            value: unix:///var/run/docker/docker.sock
+          - name: DOCKER_TIMEOUT
+            value: "5"
+        volumeMounts:
+          - name: docker-sock-dir
+            mountPath: /var/run/docker
+      sidecars:
+        - name: dind
+          image: docker:28.0.4-dind-alpine3.21
+          resources:
+            requests:
+              memory: "384Mi"
+            limits:
+              memory: "384Mi"
+          command: [dockerd-entrypoint.sh]
+          env:
+            - name: DOCKER_HOST
+              value: unix:///var/run/docker/docker.sock
+          securityContext:
+            privileged: true
+          mirrorVolumeMounts: true
+      volumes:
+        - name: docker-sock-dir
+          emptyDir: {}

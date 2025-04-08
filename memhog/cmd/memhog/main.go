@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	defaultAllocSizeBytes            = 1024 * 1024        // 1 MiB
-	defaultAllocIntervalMilliseconds = 250                //
+	defaultAllocSizeBytes            = 1024 * 1024 // 1 MiB
+	defaultAllocIntervalMilliseconds = 250
 	defaultMaxAllocBytes             = 1024 * 1024 * 1024 // 1 GiB
 )
 
