@@ -59,6 +59,7 @@ Provides infrastructure definitions to explore and analyze resource utilization 
 
 ### Kind On WSL And Docker Desktop
 
+```
 Windows:
     Windows 11 Pro 10.0.26100.3624 Build 26100
 WSL:
@@ -73,6 +74,7 @@ Kind:
     kind version 0.27.0
 Cloud Provider Kind:
     cloud-provider-kind@v0.6.0
+```
 
 **Create a cluster** using `kind create cluster`.
 
