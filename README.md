@@ -74,6 +74,8 @@ Kind:
     kind version 0.27.0
 Cloud Provider Kind:
     cloud-provider-kind@v0.6.0
+Argo CLI:
+    v3.6.5
 ```
 
 **Create a cluster** using `kind create cluster`.
