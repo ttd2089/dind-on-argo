@@ -25,12 +25,12 @@ Provides infrastructure definitions to explore and analyze resource utilization 
         .
     ```
 
-4. Start the _success_ workflow:
+4. Start the _succeed_ workflow:
 
     ```sh
     argo submit \
         --namespace argo \
-        --watch ./manifests/memhog/dind-build-and-run-workflow-success/workflow.yaml
+        --watch ./manifests/memhog/dind-build-and-run-workflow-succeed/workflow.yaml
     ```
 
     This should run for a several minutes.
